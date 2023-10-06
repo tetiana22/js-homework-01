@@ -1,13 +1,17 @@
-const input = document.getElementById('validation-input')
+const input = document.getElementById('validation-input');
+
 input.addEventListener("blur", (event) => {
-    const inputValue = event.target.value;
-    const dataLength = event.target.getAttribute("data-length");
+  const inputValue = event.target.value.length;
+  const dataLength = event.target.getAttribute("data-length");
   
-    if (inputValue.length === Number(dataLength)) {
-      event.target.classList.add("valid");
-      event.target.classList.remove("invalid");
-    } else {
-      event.target.classList.add("invalid");
-      event.target.classList.remove("valid");
-    }
-  });
+  if (inputValue === parseInt(dataLength)) {
+    borderColor(event.target, "valid", "invalid");
+  } else {
+    borderColor(event.target, "invalid", "valid");
+  }
+});
+
+function borderColor (element, addClass, removeClass) {
+  element.classList.add(addClass);
+  element.classList.remove(removeClass);
+}

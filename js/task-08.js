@@ -7,20 +7,17 @@ function onLoginFormSubmit(event) {
     
     const loginFormElements = event.currentTarget.elements;
 
-    const mail = loginFormElements.email.value;
-    const password = loginFormElements.password.value;
+    const mail = loginFormElements.email.value.trim();
+    const password = loginFormElements.password.value.trim();
 
     if (!mail || !password) {
         alert('Please fill in all fields.');
     } else {
-        
-
-        const submit = loginFormElements.submit;
         const formData = {
-            mail,
-            password,
-            submit,
-        }
+            email: mail,
+            password: password,
+        };
+        console.log(formData);
         loginForm.reset();
     }
 }
